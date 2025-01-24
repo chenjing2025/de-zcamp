@@ -1,8 +1,6 @@
-# de-zcamp
+# Module 1 Homework: Docker & SQL
 
-Module 1 Homework: Docker & SQL
-
-Terraform
+## Terraform
 
 In this section homework we'll prepare the environment by creating resources in GCP with Terraform.
 
