@@ -1,9 +1,10 @@
 # de-zcamp
 
-DE ZoomCamp from DataTalksClub
 =======
-### Concepts
+### Concepts (DE ZoomCamp from DataTalksClub)
 * [Terraform_overview](../1_terraform_overview.md)
+
+=======
 
 ### Execution
 
