@@ -1,10 +1,16 @@
 # de-zcamp
 
-=======
-### Concepts (DE ZoomCamp from DataTalksClub)
-* [Terraform_overview](../1_terraform_overview.md)
+Module 1 Homework: Docker & SQL
 
-=======
+Terraform
+
+In this section homework we'll prepare the environment by creating resources in GCP with Terraform.
+
+1. Install Terraform on Laptop. 
+
+2. Copy the files from the course repo to Laptop.
+
+3. Modify the files (see main.tf under terraform_basic folder) and create a GCP Bucket and Big Query Dataset.
 
 ### Execution
 
@@ -29,4 +35,11 @@ C:\Users\user\terraform-projects>terraform apply
 # Delete infra after your work, to avoid costs on any running services
 C:\Users\user\terraform-projects>terraform destroy
 ```
+
+
+=======
+### Concepts (DE ZoomCamp from DataTalksClub)
+* [Terraform_overview](../1_terraform_overview.md)
+
+=======
 
