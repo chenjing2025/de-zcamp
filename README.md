@@ -39,7 +39,9 @@ CREATE DATABASE taxi_data;
 ```
 Step 6. Download the Data
 It works once in Git Bash (not sure if the connection problem):
+```shell
 wget https://github.com/DataTalksClub/nyc-tlc-data/releases/download/green/green_tripdata_2019-10.csv.gz
+```
 so I use below in cmd
 ```shell
 D:\de_files>curl -L -o green_tripdata_2019-10.csv.gz https://github.com/DataTalksClub/nyc-tlc-data/releases/download/green/green_tripdata_2019-10.csv.gz
@@ -57,11 +59,13 @@ Copy the File Into the Docker Container
 ```shell
 user@DESKTOP-RKINDGJ MINGW64 /d/de_files
 $ docker cp green_tripdata_2019-10.csv pg_container:/green_tripdata_2019-10.csv
-
+```
+```shell
 dataeng@DESKTOP-RKINDGJ:~$ docker cp taxi_zone_lookup.csv pg_container:/taxi_zone_lookup.csv
-
+```
 Checking the green_tripdata_2019-10.csv heading or column for creating table in next step
 Ubuntu terminal window
+```shell
 dataeng@DESKTOP-RKINDGJ:~$ docker exec -it pg_container bash
 root@38576051a4d2:/# ls /mnt/data
 ls: cannot access '/mnt/data': No such file or directory
