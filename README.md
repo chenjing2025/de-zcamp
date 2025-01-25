@@ -82,7 +82,7 @@ ORDER BY
 
 ## Question 6. Largest tip
 
-```sql
+```shell
 SELECT
     dropoff_zone.Zone AS dropoff_zone,
     MAX(gtt.tip_amount) AS largest_tip
