@@ -136,12 +136,12 @@ CREATE TABLE taxi_zone_lookup (
     Zone VARCHAR(255),
     service_zone VARCHAR(255)
 );
-```
 
 COPY public.taxi_zone_lookup
 FROM '/taxi_zone_lookup.csv'
 DELIMITER ',' 
 CSV HEADER;
+```
 
 Step 9. Verify Data Loading
 ```sql
