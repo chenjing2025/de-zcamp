@@ -11,6 +11,9 @@ root@1c6d1016d55b:/#
 
 ## Question 2. Understanding Docker networking and docker-compose (no code for this Question)
 
+
+## Prepare Postgres
+
 ## Question 3. Trip Segmentation Count
 
 ## Question 4. Longest trip for each day
@@ -18,6 +21,55 @@ root@1c6d1016d55b:/#
 ## Question 5. Three biggest pickup zones
 
 ## Question 6. Largest tip
+
+```shell
+taxi_data=# SELECT
+    z.Zone AS dropoff_zone,
+    MAX(gtt.tip_amount) AS largest_tip
+FROM
+    public.green_taxi_trips gtt
+JOIN
+    public.taxi_zone_lookup pickup_zone
+    ON gtt.pulocationid = pickup_zone.LocationID
+JOIN
+    public.taxi_zone_lookup dropoff_zone
+    ON gtt.dolocationid = dropoff_zone.LocationID
+WHERE
+    pickup_zone.Zone = 'East Harlem North'
+    AND gtt.lpep_pickup_datetime::date BETWEEN '2019-10-01' AND '2019-10-31'
+GROUP BY
+    dropoff_zone.Zone
+ORDER BY
+    largest_tip DESC
+LIMIT 1;
+ERROR:  missing FROM-clause entry for table "z"
+LINE 2:     z.Zone AS dropoff_zone,
+            ^
+taxi_data=# SELECT
+    dropoff_zone.Zone AS dropoff_zone,
+    MAX(gtt.tip_amount) AS largest_tip
+FROM
+    public.green_taxi_trips gtt
+JOIN
+    public.taxi_zone_lookup pickup_zone
+    ON gtt.pulocationid = pickup_zone.LocationID
+JOIN
+    public.taxi_zone_lookup dropoff_zone
+    ON gtt.dolocationid = dropoff_zone.LocationID
+WHERE
+    pickup_zone.Zone = 'East Harlem North'
+    AND gtt.lpep_pickup_datetime::date BETWEEN '2019-10-01' AND '2019-10-31'
+GROUP BY
+    dropoff_zone.Zone
+ORDER BY
+    largest_tip DESC
+LIMIT 1;
+ dropoff_zone | largest_tip
+--------------+-------------
+ JFK Airport  |        87.3
+(1 row)
+
+```
 
 ## Terraform
 
