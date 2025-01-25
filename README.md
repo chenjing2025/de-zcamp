@@ -13,6 +13,136 @@ root@1c6d1016d55b:/#
 
 ## Prepare Postgres
 
+Postgres Load Data process
+
+Step 1. Install Docker
+Download Docker from Docker Desktop.
+
+Step 2. Pull the PostgreSQL Docker Image
+```shell
+docker pull postgres:latest
+```
+
+Step 3. Run PostgreSQL Container
+```shell
+docker run --name pg_container -e POSTGRES_USER=user_pg -e POSTGRES_PASSWORD=pg_password123 -d -p 5432:5432 postgres:13
+```
+
+Step 4. Connect to the PostgreSQL Container
+```shell
+docker exec -it pg_container psql -U user_pg
+```
+
+Step 5. Create a DATABASE
+```sql
+CREATE DATABASE taxi_data;
+```
+Step 6. Download the Data
+It works once in Git Bash (not sure if the connection problem):
+wget https://github.com/DataTalksClub/nyc-tlc-data/releases/download/green/green_tripdata_2019-10.csv.gz
+so I use below in cmd
+```shell
+D:\de_files>curl -L -o green_tripdata_2019-10.csv.gz https://github.com/DataTalksClub/nyc-tlc-data/releases/download/green/green_tripdata_2019-10.csv.gz
+D:\de_files>curl -L -o taxi_zone_lookup.csv https://github.com/DataTalksClub/nyc-tlc-data/releases/download/misc/taxi_zone_lookup.csv
+```
+
+Step 7. Extract the CSV Files
+Gitbash
+```shell
+user@DESKTOP-RKINDGJ MINGW64 /d/de_files
+$ gzip -d green_tripdata_2019-10.csv.gz
+```
+
+Copy the File Into the Docker Container
+```shell
+user@DESKTOP-RKINDGJ MINGW64 /d/de_files
+$ docker cp green_tripdata_2019-10.csv pg_container:/green_tripdata_2019-10.csv
+
+dataeng@DESKTOP-RKINDGJ:~$ docker cp taxi_zone_lookup.csv pg_container:/taxi_zone_lookup.csv
+
+Checking the green_tripdata_2019-10.csv heading or column for creating table in next step
+Ubuntu terminal window
+dataeng@DESKTOP-RKINDGJ:~$ docker exec -it pg_container bash
+root@38576051a4d2:/# ls /mnt/data
+ls: cannot access '/mnt/data': No such file or directory
+root@38576051a4d2:/# ls /mnt/d/de_files
+green_tripdata_2019-10.csv.gz
+root@38576051a4d2:/# zcat /mnt/d/de_files/green_tripdata_2019-10.csv.gz | csvlook | head -n 5
+bash: csvlook: command not found
+root@38576051a4d2:/# zcat /mnt/d/de_files/green_tripdata_2019-10.csv.gz | head -n 5
+VendorID,lpep_pickup_datetime,lpep_dropoff_datetime,store_and_fwd_flag,RatecodeID,PULocationID,DOLocationID,passenger_count,trip_distance,fare_amount,extra,mta_tax,tip_amount,tolls_amount,ehail_fee,improvement_surcharge,total_amount,payment_type,trip_type,congestion_surcharge
+2,2019-10-01 00:26:02,2019-10-01 00:39:58,N,1,112,196,1,5.88,18,0.5,0.5,0,0,,0.3,19.3,2,1,0
+1,2019-10-01 00:18:11,2019-10-01 00:22:38,N,1,43,263,1,.80,5,3.25,0.5,0,0,,0.3,9.05,2,1,0
+1,2019-10-01 00:09:31,2019-10-01 00:24:47,N,1,255,228,2,7.50,21.5,0.5,0.5,0,0,,0.3,22.8,2,1,0
+1,2019-10-01 00:37:40,2019-10-01 00:41:49,N,1,181,181,1,.90,5.5,0.5,0.5,0,0,,0.3,6.8,2,1,0
+root@38576051a4d2:/#
+```
+
+Step 8. Load Data Into PostgreSQL
+Load the Green Taxi Trips Data Into PostgreSQL
+```shell
+docker exec -it pg_container psql -U user_pg -d taxi_data
+```
+
+```sql
+CREATE TABLE green_taxi_trips (
+    VendorID INT,
+    lpep_pickup_datetime TIMESTAMP,
+    lpep_dropoff_datetime TIMESTAMP,
+    store_and_fwd_flag CHAR(1),
+    RatecodeID INT,
+    PULocationID INT,
+    DOLocationID INT,
+    passenger_count INT,
+    trip_distance NUMERIC,
+    fare_amount NUMERIC,
+    extra NUMERIC,
+    mta_tax NUMERIC,
+    tip_amount NUMERIC,
+    tolls_amount NUMERIC,
+    ehail_fee NUMERIC,
+    improvement_surcharge NUMERIC,
+    total_amount NUMERIC,
+    payment_type INT,
+    trip_type INT,
+    congestion_surcharge NUMERIC
+);
+
+COPY public.green_taxi_trips
+FROM '/green_tripdata_2019-10.csv'
+DELIMITER ',' 
+CSV HEADER;
+```
+
+Load the Taxi Zone Lookup Data Into PostgreSQL
+Step 1: Access PostgreSQL
+```shell
+docker exec -it pg_container psql -U user_pg -d taxi_data
+```
+
+```sql
+CREATE TABLE taxi_zone_lookup (
+    LocationID INT,
+    Borough VARCHAR(255),
+    Zone VARCHAR(255),
+    service_zone VARCHAR(255)
+);
+```
+
+COPY public.taxi_zone_lookup
+FROM '/taxi_zone_lookup.csv'
+DELIMITER ',' 
+CSV HEADER;
+
+Step 9. Verify Data Loading
+```sql
+SELECT COUNT(*) FROM public.green_taxi_trips;
+SELECT COUNT(*) FROM public.taxi_zone_lookup;
+```
+
+Step 10. Exit the PostgreSQL Container
+\q
+
 ## Question 3. Trip Segmentation Count
 
 ```shell
