@@ -2,11 +2,11 @@
 
 ## Terraform
 
-In this section homework we'll prepare the environment by creating resources in GCP with Terraform.
+In this section homework 1, I have done prepared the environment by creating resources in GCP with Terraform.
 
 1. Install Terraform on Laptop. 
 
-2. Copy the files from the course repo to Laptop.
+2. Copy the files from the course repo to the Laptop.
 
 3. Modify the files (see main.tf under terraform_basic folder) and create a GCP Bucket and Big Query Dataset.
 
