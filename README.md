@@ -11,11 +11,11 @@ In this section homework we'll prepare the environment by creating resources in 
 3. Modify the files (see main.tf under terraform_basic folder) and create a GCP Bucket and Big Query Dataset.
 
 GCP Bucket
-   <img src="images/gcp_bucket.png" alt="GCP Bucket" width="100" height="50">
+   <img src="images/gcp_bucket.png" alt="GCP Bucket" width="500" height="300">
    
    
 Big Query Dataset
-   <img src="images/big_query_dataset.png" alt="Big Query Dataset" width="1000" height="50">
+   <img src="images/big_query_dataset.png" alt="Big Query Dataset" width="500" height="300">
 
 ### Execution
 
