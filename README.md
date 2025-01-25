@@ -38,6 +38,7 @@ Step 5. Create a DATABASE
 CREATE DATABASE taxi_data;
 ```
 Step 6. Download the Data
+
 It works once in Git Bash (not sure if the connection problem):
 ```shell
 wget https://github.com/DataTalksClub/nyc-tlc-data/releases/download/green/green_tripdata_2019-10.csv.gz
