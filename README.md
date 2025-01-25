@@ -13,7 +13,7 @@ root@1c6d1016d55b:/#
 
 ## Prepare Postgres
 
-### Postgres Load Data process
+There is Postgres Load Data process as below.
 
 Step 1. Install Docker
 Download Docker from Docker Desktop.
