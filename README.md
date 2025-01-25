@@ -9,6 +9,15 @@ pip 24.3.1 from /usr/local/lib/python3.12/site-packages/pip (python 3.12)
 root@1c6d1016d55b:/#
 ```
 
+## Question 2. Understanding Docker networking and docker-compose (no code for this Question)
+
+## Question 3. Trip Segmentation Count
+
+## Question 4. Longest trip for each day
+
+## Question 5. Three biggest pickup zones
+
+## Question 6. Largest tip
 
 ## Terraform
 
@@ -67,9 +76,8 @@ C:\Users\user\terraform-projects>terraform destroy
 
 After executing terraform destroy, both the GCP Bucket and Big Query Dataset I created before are removed.
 
-=======
-### Concepts (DE ZoomCamp from DataTalksClub)
-* [Terraform_overview](../1_terraform_overview.md)
 
-=======
+## Question 7. Terraform Workflow ((no code for this Question))
+
+
 
