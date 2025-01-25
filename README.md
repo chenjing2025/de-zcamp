@@ -10,6 +10,13 @@ In this section homework we'll prepare the environment by creating resources in 
 
 3. Modify the files (see main.tf under terraform_basic folder) and create a GCP Bucket and Big Query Dataset.
 
+GCP Bucket
+   ![GCP Bucket](images/gcp_bucket.png)
+   
+   
+Big Query Dataset
+    ![Big Query Dataset](images/big_query_dataset.png)
+
 ### Execution
 
 ```shell
