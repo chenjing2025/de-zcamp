@@ -1,5 +1,15 @@
 # Module 1 Homework: Docker & SQL
 
+## Question 1. Understanding docker first run
+
+```shell
+dataeng@DESKTOP-RKINDGJ:~$ docker run -it --entrypoint bash python:3.12.8
+root@1c6d1016d55b:/# pip --version
+pip 24.3.1 from /usr/local/lib/python3.12/site-packages/pip (python 3.12)
+root@1c6d1016d55b:/#
+```
+
+
 ## Terraform
 
 In this section homework 1, I have done prepared the environment by creating resources in GCP with Terraform.
@@ -24,7 +34,7 @@ Big Query Dataset
 ```shell
 # Refresh service-account's auth-token for this session
 gcloud auth application-default login
-
+```
 
 ```shell
 # Initialize state file (.tfstate)
