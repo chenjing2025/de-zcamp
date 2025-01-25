@@ -25,24 +25,37 @@ Big Query Dataset
 # Refresh service-account's auth-token for this session
 gcloud auth application-default login
 
+
+```shell
 # Initialize state file (.tfstate)
 C:\Users\user>cd C:\Users\user\terraform-projects
 C:\Users\user\terraform-projects>terraform init
+```
 
+ <img src="images/tf_init.png" width="500">
+
+```shell
 # Check changes to new infra plan
 C:\Users\user\terraform-projects>terraform plan
 ```
+
+ <img src="images/tf_plan.png" width="500">
 
 ```shell
 # Create new infra
 C:\Users\user\terraform-projects>terraform apply
 ```
 
+ <img src="images/tf_apply.png" width="500">
+ 
 ```shell
 # Delete infra after your work, to avoid costs on any running services
 C:\Users\user\terraform-projects>terraform destroy
 ```
 
+ <img src="images/tf_destroy.png" width="500">
+
+After executing terraform destroy, both the GCP Bucket and Big Query Dataset I created before are removed.
 
 =======
 ### Concepts (DE ZoomCamp from DataTalksClub)
