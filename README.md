@@ -224,7 +224,7 @@ ORDER BY
 ## Question 6. Largest tip
 
 ```shell
-SELECT
+taxi_data=# SELECT
     dropoff_zone.Zone AS dropoff_zone,
     MAX(gtt.tip_amount) AS largest_tip
 FROM
@@ -278,35 +278,35 @@ Big Query Dataset
 
 ### Execution
 
+Refresh service-account's auth-token for this session
 ```shell
-# Refresh service-account's auth-token for this session
 gcloud auth application-default login
 ```
 
+Initialize state file (.tfstate)
 ```shell
-# Initialize state file (.tfstate)
 C:\Users\user>cd C:\Users\user\terraform-projects
 C:\Users\user\terraform-projects>terraform init
 ```
 
  <img src="images/tf_init.png" width="500">
 
-```shell
-# Check changes to new infra plan
+Check changes to new infra plan
+```shell 
 C:\Users\user\terraform-projects>terraform plan
 ```
 
  <img src="images/tf_plan.png" width="500">
 
+Create new infra
 ```shell
-# Create new infra
 C:\Users\user\terraform-projects>terraform apply
 ```
 
  <img src="images/tf_apply.png" width="500">
- 
+
+Delete infra after your work, to avoid costs on any running services
 ```shell
-# Delete infra after your work, to avoid costs on any running services
 C:\Users\user\terraform-projects>terraform destroy
 ```
 
