@@ -113,11 +113,18 @@ LIMIT 1;
 
 In this section homework 1, I have done prepared the environment by creating resources in GCP with Terraform.
 
-1. Install Terraform on Laptop. 
+1. Setup for Terraform and GCP 
 
-2. Copy the files from the course repo to the Laptop.
+a. Install Terraform on Laptop (https://github.com/DataTalksClub/data-engineering-zoomcamp/blob/main/01-docker-terraform/1_terraform_gcp/windows.md)
 
-3. Modify the files (see main.tf under terraform_basic folder) and create a GCP Bucket and Big Query Dataset.
+b. GCP setup (https://github.com/DataTalksClub/data-engineering-zoomcamp/blob/main/01-docker-terraform/1_terraform_gcp/2_gcp_overview.md#initial-setup)
+
+c. Terraform Workshop to create GCP Infra (
+https://github.com/DataTalksClub/data-engineering-zoomcamp/blob/main/01-docker-terraform/1_terraform_gcp/1_terraform_overview.md#execution-steps)
+
+3. Copy the files from the course repo to the Laptop.
+
+4. Modify the files (see updated main.tf under terraform_basic folder) and create a GCP Bucket and Big Query Dataset.
 
 GCP Bucket
 
