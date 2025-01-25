@@ -84,7 +84,10 @@ root@38576051a4d2:/#
 ```
 
 Step 8. Load Data Into PostgreSQL
-Load the Green Taxi Trips Data Into PostgreSQL
+
+8.1 Load the Green Taxi Trips Data Into PostgreSQL
+
+Access PostgreSQL
 ```shell
 docker exec -it pg_container psql -U user_pg -d taxi_data
 ```
@@ -119,8 +122,9 @@ DELIMITER ','
 CSV HEADER;
 ```
 
-Load the Taxi Zone Lookup Data Into PostgreSQL
-Step 1: Access PostgreSQL
+8.2 Load the Taxi Zone Lookup Data Into PostgreSQL
+
+Access PostgreSQL
 ```shell
 docker exec -it pg_container psql -U user_pg -d taxi_data
 ```
