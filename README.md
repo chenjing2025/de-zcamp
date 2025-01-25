@@ -150,7 +150,9 @@ SELECT COUNT(*) FROM public.taxi_zone_lookup;
 ```
 
 Step 10. Exit the PostgreSQL Container
+```sql
 \q
+```
 
 ## Question 3. Trip Segmentation Count
 
