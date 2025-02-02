@@ -44,6 +44,12 @@ select count(*) from public.green_tripdata;
 
 use [02_postgres_taxi_scheduled.yaml](https://github.com/chenjing2025/de-zcamp/blob/main/02-workflow-orchestration/flows/02_postgres_taxi_scheduled.yaml)
 
+```sql
+select count(*) from public.yellow_tripdata
+where filename = 'yellow_tripdata_2021-03.csv';
+-- 1925152
+```
+
 or use 
 [04_gcp_kv.yaml](https://github.com/DataTalksClub/data-engineering-zoomcamp/blob/main/02-workflow-orchestration/flows/04_gcp_kv.yaml)
 
@@ -51,10 +57,7 @@ or use
 
 [06_gcp_taxi.yaml](https://github.com/DataTalksClub/data-engineering-zoomcamp/blob/main/02-workflow-orchestration/flows/06_gcp_taxi.yaml)
 
-```sql
-select count(*) from public.yellow_tripdata
-where filename = 'yellow_tripdata_2021-03.csv';
--- 1925152
-```
+Then query like Q3 for yellow_tripdata with 2021-03
+
 
 ### 6.(skip as no code for this Question)
