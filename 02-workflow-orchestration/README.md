@@ -19,7 +19,7 @@ see 02_postgres_taxi.yaml
 
 ### 4.
 
-see 02_postgres_taxi.yaml
+see [02_postgres_taxi_scheduled](https://github.com/chenjing2025/de-zcamp/blob/main/02-workflow-orchestration/flows/02_postgres_taxi_scheduled.yaml)
 
 ### 5.
 
