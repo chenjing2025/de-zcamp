@@ -2,8 +2,10 @@
 
 Note: The yaml file used in Kestra are in flows folder.
 
-Modified 02_postgres_taxi.yaml and 02_postgres_taxi_scheduled.yaml with update pluginDefaults
+Modified 02_postgres_taxi.yaml and 02_postgres_taxi_scheduled.yaml with update pluginDefaults.
+
 Modified 04_gcp_kv.yaml with setup in Google Cloud Storage (GCS) and BigQuery.
+
 
 ## Quiz Questions
 
