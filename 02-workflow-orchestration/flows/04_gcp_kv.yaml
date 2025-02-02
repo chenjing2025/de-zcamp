@@ -8,7 +8,7 @@ tasks:
     kvType: JSON
     value: |
       {
-        ... # copy content in json file there
+        ... # copy GCP_Credentials json file content there
       }
 
 
