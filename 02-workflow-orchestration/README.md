@@ -18,11 +18,18 @@ use [02_postgres_taxi.yaml](https://github.com/chenjing2025/de-zcamp/blob/main/0
 ### 3.
 
 use: 
+
 [04_gcp_kv.yaml](https://github.com/DataTalksClub/data-engineering-zoomcamp/blob/main/02-workflow-orchestration/flows/04_gcp_kv.yaml)
 
 [05_gcp_setup.yaml](https://github.com/DataTalksClub/data-engineering-zoomcamp/blob/main/02-workflow-orchestration/flows/05_gcp_setup.yaml)
 
 [06_gcp_taxi_scheduled.yaml](https://github.com/DataTalksClub/data-engineering-zoomcamp/blob/main/02-workflow-orchestration/flows/06_gcp_taxi_scheduled.yaml)
+
+```sql
+SELECT count(*) FROM `dtc-de-course-447820.my_data_lake_dataset.yellow_tripdata`;
+24648499
+```
+
 
 ### 4.
 
