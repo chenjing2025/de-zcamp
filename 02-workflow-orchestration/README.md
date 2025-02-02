@@ -9,7 +9,7 @@ Note: The yaml file used in Kestra are in flows folder.
 use [02_postgres_taxi.yaml](https://github.com/chenjing2025/de-zcamp/blob/main/02-workflow-orchestration/flows/02_postgres_taxi.yaml)
 
 
-<img src="images/tf_init.png" width="500">
+<img src="images/hw2_Q1.png" width="500">
 
 ### 2. (skip as no code for this Question)
 
