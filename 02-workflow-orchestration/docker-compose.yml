@@ -1,0 +1,80 @@
+volumes:
+  postgres-data:
+    driver: local
+  kestra-data:
+    driver: local
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: pg15_container
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}"]
+      interval: 30s
+      timeout: 10s
+      retries: 10
+
+  kestra:
+    image: kestra/kestra:latest
+    pull_policy: always
+    user: "root"
+    command: server standalone
+    volumes:
+      - kestra-data:/app/storage
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /tmp/kestra-wd:/tmp/kestra-wd
+    environment:
+      KESTRA_CONFIGURATION: |
+        datasources:
+          postgres:
+            url: jdbc:postgresql://pg15_container:5432/postgres
+            driverClassName: org.postgresql.Driver
+            username: postgres
+            password: 123
+        kestra:
+          server:
+            basicAuth:
+              enabled: true
+              username: "..."  # my email
+              password: "..."  # my password
+          repository:
+            type: postgres
+          storage:
+            type: local
+            local:
+              basePath: "/app/storage"
+          queue:
+            type: postgres
+          tasks:
+            tmpDir:
+              path: /tmp/kestra-wd/tmp
+          url: http://localhost:8080/
+        pluginDefaults:
+          - type: io.kestra.plugin.jdbc.postgresql
+            values:
+              url: jdbc:postgresql://pg15_container:5432/postgres
+              username: postgres
+              password: 123
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin_container
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "..."  # my email
+      PGADMIN_DEFAULT_PASSWORD: "..."  # my password
+    ports:
+      - "8081:80"  # This is the port mapping for pgAdmin
+    depends_on:
+      postgres:
+        condition: service_healthy
