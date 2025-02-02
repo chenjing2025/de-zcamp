@@ -1,5 +1,7 @@
 # Module 2 Homework
 
+Note: The yaml file used in Kestra are in flows folder.
+
 ## Quiz Questions
 
 ### 1.
