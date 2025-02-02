@@ -27,13 +27,18 @@ use:
 
 ```sql
 SELECT count(*) FROM `dtc-de-course-447820.my_data_lake_dataset.yellow_tripdata`;
-24648499
+-- 24648499
 ```
 
 
 ### 4.
 
 use [02_postgres_taxi_scheduled.yaml](https://github.com/chenjing2025/de-zcamp/blob/main/02-workflow-orchestration/flows/02_postgres_taxi_scheduled.yaml)
+
+```sql
+select count(*) from public.green_tripdata;
+-- 1734051
+```
 
 ### 5.
 
@@ -45,5 +50,11 @@ or use
 [05_gcp_setup.yaml](https://github.com/DataTalksClub/data-engineering-zoomcamp/blob/main/02-workflow-orchestration/flows/05_gcp_setup.yaml)
 
 [06_gcp_taxi.yaml](https://github.com/DataTalksClub/data-engineering-zoomcamp/blob/main/02-workflow-orchestration/flows/06_gcp_taxi.yaml)
+
+```sql
+select count(*) from public.yellow_tripdata
+where filename = 'yellow_tripdata_2021-03.csv';
+-- 1925152
+```
 
 ### 6.(skip as no code for this Question)
