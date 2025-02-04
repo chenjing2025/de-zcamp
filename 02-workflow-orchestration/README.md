@@ -35,17 +35,17 @@ SELECT count(*) FROM `dtc-de-course-447820.my_data_lake_dataset.yellow_tripdata`
 -- 24648499
 ```
 
-Step 1: Kestra Flow:
+-- Kestra Flow:
 
 <img src="images/hw2_Q3_Kestra.png" width="600">
 
 
-Step 2: Google Cloud Storage (GCS) - data lake:
+-- Google Cloud Storage (GCS) - data lake:
 
 <img src="images/hw2_Q3_bucket.png" width="600">
 
 
-Step 3: BigQuery as a data warehouse：
+-- BigQuery as a data warehouse：
 
 <img src="images/hw2_Q3_BigQuery.png" width="600">
 
