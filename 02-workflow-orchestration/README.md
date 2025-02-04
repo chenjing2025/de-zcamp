@@ -35,12 +35,16 @@ SELECT count(*) FROM `dtc-de-course-447820.my_data_lake_dataset.yellow_tripdata`
 -- 24648499
 ```
 
+-- Backfill the Yellow Taxi data for the data for the year 2020
+
 -- Kestra Flow:
 
 <img src="images/hw2_Q3_Kestra.png" width="600">
 
 
 -- Google Cloud Storage (GCS) - data lake:
+
+-- all CSV files in the year 2020
 
 <img src="images/hw2_Q3_bucket.png" width="600">
 
