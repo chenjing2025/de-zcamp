@@ -35,6 +35,8 @@ SELECT count(*) FROM `dtc-de-course-447820.my_data_lake_dataset.yellow_tripdata`
 -- 24648499
 ```
 
+<img src="images/hw2_Q3_Kestra.png" width="600">
+
 <img src="images/hw2_Q3_bucket.png" width="600">
 
 <img src="images/hw2_Q3_BigQuery.png" width="600">
