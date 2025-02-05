@@ -1,7 +1,7 @@
 # Module 3 Homework
 
 
-<img src="images/py_results.png" width="800">
+<img src="images/py_results.png" width="500">
 
 
 ### Q1.
@@ -21,7 +21,7 @@ FROM `dtc-de-course-447820.my_data_lake_dataset.external_yellow_tripdata`;
 ```
 
 
-<img src="images/hw3_Q1.png" width="600">
+<img src="images/hw3_Q1.png" width="500">
 
 
 ### Q2.
