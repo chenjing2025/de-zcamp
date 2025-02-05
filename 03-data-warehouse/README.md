@@ -1,5 +1,9 @@
 # Module 3 Homework
 
+
+<img src="images/py_results.png" width="800">
+
+
 ### Q1.
 
 ```sql
@@ -15,6 +19,9 @@ SELECT COUNT(*) as record_count
 FROM `dtc-de-course-447820.my_data_lake_dataset.external_yellow_tripdata`;
 -- 20332093
 ```
+
+
+<img src="images/hw3_Q1.png" width="600">
 
 
 ### Q2.
