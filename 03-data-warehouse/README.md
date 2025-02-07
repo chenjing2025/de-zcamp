@@ -77,10 +77,33 @@ WHERE fare_amount = 0;
 -- 8333
 ```
 
-### Question 5: (skip as no code for this Question)
+### Question 5:
 
+```sql
+-- Creating a partition and cluster table
+CREATE OR REPLACE TABLE dtc-de-course-447820.my_data_lake_dataset.yellow_tripdata_2024_partitoned_clustered
+PARTITION BY DATE(tpep_dropoff_datetime )
+CLUSTER BY VendorID AS
+SELECT * FROM dtc-de-course-447820.my_data_lake_dataset.yellow_tripdata_2024;
+```
 
 ### Question 6:
+
+```sql
+SELECT DISTINCT VendorID
+FROM `dtc-de-course-447820.my_data_lake_dataset.yellow_tripdata_2024`
+WHERE tpep_dropoff_datetime BETWEEN '2024-03-01' AND '2024-03-15';
+```
+
+<img src="images/hw3_Q6_non-partitioned.png" width="500">
+
+```sql
+SELECT DISTINCT VendorID
+FROM `dtc-de-course-447820.my_data_lake_dataset.yellow_tripdata_2024_partitoned_clustered`
+WHERE tpep_dropoff_datetime BETWEEN '2024-03-01' AND '2024-03-15';
+```
+
+<img src="images/hw3_Q6_partitioned-clustered.png" width="500">
 
 
 ### Question 7: (skip as no code for this Question)
@@ -90,3 +113,10 @@ WHERE fare_amount = 0;
 
 
 ### (Bonus: Not worth points) Question 9:
+
+```sql
+SELECT COUNT(*) 
+FROM `dtc-de-course-447820.my_data_lake_dataset.yellow_tripdata_2024`;
+```
+
+<img src="images/hw3_Q9.png" width="500">
