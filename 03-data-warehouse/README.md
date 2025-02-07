@@ -57,8 +57,21 @@ FROM dtc-de-course-447820.my_data_lake_dataset.yellow_tripdata_2024;
 <img src="images/hw3_Q2_regular.png" width="500">
 
 
+### Question 3:
 
-### Question 3: (skip as no code for this Question)
+```sql
+SELECT PULocationID
+FROM `dtc-de-course-447820.my_data_lake_dataset.yellow_tripdata_2024`;
+```
+
+<img src="images/hw3_Q3-1.png" width="500">
+
+```sql
+SELECT PULocationID, DOLocationID
+FROM `dtc-de-course-447820.my_data_lake_dataset.yellow_tripdata_2024`;
+```
+
+<img src="images/hw3_Q3-2.png" width="500">
 
 
 ### Question 4:
