@@ -1,9 +1,10 @@
 ## Workshop "Data Ingestion with dlt": Homework
 
-Run https://github.com/chenjing2025/de-zcamp/blob/main/workshop1_dlt/README.md in Google Colab
+Run the code below in Google Colab
 
 ```markdown
-[Link to the Notebook](path/to/your/workshop1_dlt_homework.ipynb)
+[Link to the Notebook](https://github.com/chenjing2025/de-zcamp/blob/main/workshop1_dlt/workshop1_dlt_homework.ipynb))
+```
 
 ### Question 1: dlt Version
 
