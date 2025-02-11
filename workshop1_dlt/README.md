@@ -5,6 +5,7 @@ Run the code below in Google Colab
 ```markdown
 [Link to the Notebook](https://github.com/chenjing2025/de-zcamp/blob/main/workshop1_dlt/workshop1_dlt_homework.ipynb)
 ```
+use [workshop1_dlt_homework.ipynb](https://github.com/chenjing2025/de-zcamp/blob/main/workshop1_dlt/workshop1_dlt_homework.ipynb)
 
 ### Question 1: dlt Version
 
