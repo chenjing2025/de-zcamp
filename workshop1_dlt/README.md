@@ -70,17 +70,21 @@ tables = conn.sql("SHOW TABLES").df()
 print(tables)
 ```
 
+```markdown
                   name
 0           _dlt_loads
 1  _dlt_pipeline_state
 2         _dlt_version
 3              ny_taxi
+```
 
 ```python
 print(len(tables))
 ```
 
+```markdown
 4
+```
 
 ### Question 3: Explore the loaded data
 
@@ -90,7 +94,9 @@ total_records = len(df4)
 print(f"Total number of records extracted: {total_records}")
 ```
 
+```markdown
 Total number of records extracted: 10000
+```
 
 ### Question 4: Trip Duration Analysis
 
@@ -107,4 +113,6 @@ with pipeline.sql_client() as client:
     print(res)
 ```
 
+```markdown
 [(12.3049,)]
+```
