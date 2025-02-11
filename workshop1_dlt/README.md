@@ -10,6 +10,10 @@ Run the code [workshop1_dlt_homework.ipynb](https://github.com/chenjing2025/de-z
 !dlt --version
 ```
 
+```markdown
+dlt 1.6.1
+```
+
 ### Question 2: Define & Run the Pipeline (NYC Taxi API)
 
 ```python
