@@ -36,6 +36,8 @@ Goal: Transforming the data loaded in DWH into Analytical Views developing a [db
 
 DBT Model:
 
+use [fct_taxi_trips_quarterly_revenue.sql](https://github.com/chenjing2025/de-zcamp/blob/main/04-analytics-engineering/taxi_rides_ny/models/core/fct_taxi_trips_quarterly_revenue.sql)
+
 ```sql
 -- models/core/fct_taxi_trips_quarterly_revenue.sql with YoY
 WITH quarterly_revenue AS (
