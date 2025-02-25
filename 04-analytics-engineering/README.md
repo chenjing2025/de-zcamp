@@ -100,7 +100,7 @@ SELECT
     ) AS yellow;
 ```
 
-<img src="images/Q5_answer.png" width="500">
+<img src="images/Q5_answer.png" width="1000">
 
 
 ## Question 6: P97/P95/P90 Taxi Monthly Fare
@@ -142,7 +142,7 @@ WHERE month = 4 AND year = 2020;
 
 ```
 
-<img src="images/Q6_answer.png" width="500">
+<img src="images/Q6_answer.png" width="1000">
 
 ## Question 7: Top #Nth longest P90 travel time Location for FHV
 
@@ -251,7 +251,7 @@ WHERE rank = 2;  -- This will get the 2nd longest P90 trip duration
 
 ```
 
-<img src="images/Q7_answer.png" width="500">
+<img src="images/Q7_answer.png" width="1000">
 
 
 
