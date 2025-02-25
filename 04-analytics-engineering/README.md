@@ -208,7 +208,7 @@ INNER JOIN dim_zones dz
 
 ```
 
-use [fct_fhv_monthly_zone_traveltime_p90](https://github.com/chenjing2025/de-zcamp/blob/main/04-analytics-engineering/taxi_rides_ny/models/core/fct_fhv_monthly_zone_traveltime_p90.sql)
+use [fct_fhv_monthly_zone_traveltime_p90.sql](https://github.com/chenjing2025/de-zcamp/blob/main/04-analytics-engineering/taxi_rides_ny/models/core/fct_fhv_monthly_zone_traveltime_p90.sql)
 
 ```sql
 -- fct_fhv_monthly_zone_traveltime_p90.sql
