@@ -21,6 +21,8 @@ Goal: Transforming the data loaded in DWH into Analytical Views developing a [db
 
 ## Question 3: dbt Data Lineage and Execution
 
+Select the option that does NOT apply for materializing fct_taxi_monthly_zone_revenue:
+
 * [dbt run --select models/staging/+]
 
 
@@ -109,6 +111,8 @@ SELECT
 
 DBT Model
 
+use [fct_taxi_trips_monthly_fare_p95.sql](https://github.com/chenjing2025/de-zcamp/blob/main/04-analytics-engineering/taxi_rides_ny/models/core/fct_taxi_trips_monthly_fare_p95.sql)
+
 ```sql
 -- fct_taxi_trips_monthly_fare_p95.sql
 WITH filtered_trips AS (
@@ -150,6 +154,8 @@ WHERE month = 4 AND year = 2020;
 
 DBT Model
 
+use [stg_fhv_tripdata.sql](https://github.com/chenjing2025/de-zcamp/blob/main/04-analytics-engineering/taxi_rides_ny/models/staging/stg_fhv_tripdata.sql)
+
 ```sql
 -- stg_fhv_tripdata.sql
 {{ config(materialized='view') }}
@@ -166,6 +172,8 @@ FROM {{ source('staging', 'fhv_tripdata') }}
 WHERE dispatching_base_num IS NOT NULL   -- Filter out rows where dispatching_base_num is NULL
 
 ```
+
+use [dim_fhv_trips.sql](https://github.com/chenjing2025/de-zcamp/blob/main/04-analytics-engineering/taxi_rides_ny/models/core/dim_fhv_trips.sql)
 
 ```sql
 -- dim_fhv_trips.sql
@@ -199,6 +207,8 @@ INNER JOIN dim_zones dz
     ON fhv.DOLocationID = dz.locationid  -- Adjust field names as necessary
 
 ```
+
+use [fct_fhv_monthly_zone_traveltime_p90](https://github.com/chenjing2025/de-zcamp/blob/main/04-analytics-engineering/taxi_rides_ny/models/core/fct_fhv_monthly_zone_traveltime_p90.sql)
 
 ```sql
 -- fct_fhv_monthly_zone_traveltime_p90.sql
@@ -254,8 +264,6 @@ WHERE rank = 2;  -- This will get the 2nd longest P90 trip duration
 ```
 
 <img src="images/Q7_answer.png" width="1000">
-
-
 
 
 
