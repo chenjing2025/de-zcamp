@@ -1,14 +1,76 @@
 # Module 4 Homework
-Goal: Transforming the data loaded in DWH into Analytical Views developing a [dbt project](taxi_rides_ny/README.md).
 
 ### Prerequisites
 
 - A running warehouse (BigQuery) 
-- A set of running pipelines ingesting the project dataset (week 3 completed web_to_gcs.py)
 - The following datasets ingested from the course [Datasets list](https://github.com/DataTalksClub/nyc-tlc-data/): 
-  * Yellow taxi data - Years 2019 and 2020
-  * Green taxi data - Years 2019 and 2020 
-  * fhv data - Year 2019. 
+  * Yellow taxi data - Years 2019 and 2020 (7,778,101 records)
+  * Green taxi data - Years 2019 and 2020 (109,047,518 records)
+  * fhv data - Year 2019 (43,244,696 records)
+- Downloads csv files and uploads them to Cloud Storage Account as parquet files. [web_to_gcs.py](https://github.com/chenjing2025/de-zcamp/blob/main/04-analytics-engineering/web_to_gcs.py)
+
+#### For fhv data:
+
+```sql
+-- from 2019-01 to 2019-12
+CREATE OR REPLACE EXTERNAL TABLE `dtc-de-course-447820.my_test_dataset.fhv_tripdata_2019-12`
+OPTIONS (
+  format = 'PARQUET',  -- Using Parquet format for the files
+  uris = ['gs://my-kestra-data-bucket/fhv/fhv_tripdata_2019-12.parquet']  -- Update with your actual GCS path
+);
+
+select * from `dtc-de-course-447820.my_test_dataset.fhv_tripdata_2019-01` 
+where PUlocationID is not null limit 10;
+
+CREATE OR REPLACE TABLE `dtc-de-course-447820.my_test_dataset.test19_fhv` AS
+SELECT
+    CAST(dispatching_base_num AS STRING) AS dispatching_base_num,
+    CAST(pickup_datetime AS STRING) AS pickup_datetime,
+    CAST(dropOff_datetime AS STRING) AS dropOff_datetime,
+    CAST(PUlocationID AS INT64) AS PUlocationID, -- Assuming PUlocationID is an integer
+    CAST(DOLocationID AS INT64) AS DOLocationID,
+    CAST(SR_Flag AS FLOAT64) AS SR_Flag, -- Assuming SR_Flag is a numeric type
+    CAST(Affiliated_base_number AS STRING) AS Affiliated_base_number
+FROM `dtc-de-course-447820.my_test_dataset.fhv_tripdata_2019-01`;
+
+
+-- insert into the rest 11 month 2019 fhv data
+INSERT INTO `dtc-de-course-447820.my_test_dataset.test19_fhv`
+SELECT 
+    CAST(dispatching_base_num AS STRING) AS dispatching_base_num,
+    CAST(pickup_datetime AS STRING) AS pickup_datetime,
+    CAST(dropOff_datetime AS STRING) AS dropOff_datetime,
+    CAST(PUlocationID AS INT64) AS PUlocationID, -- Assuming PUlocationID is an integer
+    CAST(DOLocationID AS INT64) AS DOLocationID,
+    CAST(SR_Flag AS FLOAT64) AS SR_Flag, -- Assuming SR_Flag is a numeric type
+    CAST(Affiliated_base_number AS STRING) AS Affiliated_base_number
+FROM `dtc-de-course-447820.my_test_dataset.fhv_tripdata_2019-12`;
+-- This statement added 1,707,649 rows to test19_fhv.
+-- This statement added 1,475,564 rows to test19_fhv.
+-- This statement added 1,937,844 rows to test19_fhv.
+-- This statement added 2,073,045 rows to test19_fhv.
+-- This statement added 2,009,886 rows to test19_fhv.
+-- This statement added 1,947,739 rows to test19_fhv.
+-- This statement added 1,880,407 rows to test19_fhv.
+-- This statement added 1,248,514 rows to test19_fhv.
+-- This statement added 1,897,493 rows to test19_fhv.
+-- This statement added 1,879,137 rows to test19_fhv.
+-- This statement added 2,044,196 rows to test19_fhv.
+
+select count(*) from `dtc-de-course-447820.my_test_dataset.test19_fhv`;
+-- 23143222   --2019-01 data
+-- 43244696   --2019 total fhv data
+
+create or replace table `dtc-de-course-447820.trips_data_all.fhv_tripdata` as
+select * from `dtc-de-course-447820.my_test_dataset.test19_fhv`;
+
+select * from `dtc-de-course-447820.trips_data_all.fhv_tripdata` limit 10;
+
+select count(*) from `dtc-de-course-447820.trips_data_all.fhv_tripdata`;
+-- 43244696
+
+```
+
 
 ## Question 1: Understanding dbt model resolution
 
