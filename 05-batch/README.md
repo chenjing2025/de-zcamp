@@ -31,7 +31,7 @@ print("Data has been written to Parquet successfully.")
 
 Open Ubuntu:
 
-<img src="images/Q2.png" width="500">
+<img src="images/Q2.png" width="800" height="100">
 
 ## Question 3: Count records
 
@@ -66,7 +66,8 @@ df_with_duration.selectExpr("MAX(trip_duration_hours) AS longest_trip").show()
 ## Question 5: User Interface (skip as no code for this Question)
 
 Spark’s User Interface which shows the application's dashboard runs on which local port?
-*** 4040
+
+* 4040
 
 ## Question 6: Least frequent pickup location zone
 
