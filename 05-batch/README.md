@@ -1,5 +1,10 @@
 # Module 5 Homework
 
+There are two methods for this homework. 
+
+1. Use SQL. see [homework_5.ipynb](https://github.com/chenjing2025/de-zcamp/blob/main/05-batch/homework_5.ipynb)
+
+2. Spark in PySpark as below:
 
 ## Question 1: Install Spark and PySpark
 
