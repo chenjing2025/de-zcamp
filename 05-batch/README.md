@@ -2,9 +2,9 @@
 
 There are two methods for this homework. 
 
-1. Use SQL. see [homework_5.ipynb](https://github.com/chenjing2025/de-zcamp/blob/main/05-batch/homework_5.ipynb)
+1. SQL Query Approach (Spark SQL). see [homework_5.ipynb](https://github.com/chenjing2025/de-zcamp/blob/main/05-batch/homework_5.ipynb)
 
-2. Spark in PySpark as below:
+2. DataFrame API Approach (Functional API) as below:
 
 ## Question 1: Install Spark and PySpark
 
