@@ -24,3 +24,6 @@ see [send_trips.py](https://github.com/chenjing2025/de-zcamp/blob/main/06-stream
 
 
 ## Question 5: Build a Sessionization Window
+
+see [session_job.py](https://github.com/chenjing2025/de-zcamp/blob/main/06-streaming/session_job.py)
+
