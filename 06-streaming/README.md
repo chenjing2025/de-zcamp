@@ -13,6 +13,8 @@
 
 ## Question 3. Connecting to the Kafka server
 
+see [test_kafka.py](https://github.com/chenjing2025/de-zcamp/blob/main/06-streaming/test_kafka.py)
+
 <img src="images/Q3.png" width="500">
 
 
