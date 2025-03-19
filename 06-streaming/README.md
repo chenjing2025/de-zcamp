@@ -18,6 +18,8 @@
 
 ## Question 4: Sending the Trip Data
 
+see [send_trips.py](https://github.com/chenjing2025/de-zcamp/blob/main/06-streaming/send_trips.py)
+
 <img src="images/Q4_whole.png" width="500">
 
 
