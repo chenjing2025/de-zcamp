@@ -32,39 +32,49 @@ First, we need to create a Google Cloud Storage bucket and a BigQuery dataset.
 
 🛠 Step 1: Install Terraform
 
-Make sure Terraform is installed on your system:
++ Install Terraform on your system by following this guide:[Terraform Installation Guide](https://github.com/DataTalksClub/data-engineering-zoomcamp/blob/main/01-docker-terraform/1_terraform_gcp/windows.md).
+
++ Once installed, verify the installation with:
+
 ```
 terraform -v  # Check Terraform version
 ```
-🛠 Step 2: Create a Terraform Script
 
-Create a file main.tf:
-```
-provider "google" {
-  credentials = file("<YOUR-CREDENTIALS-FILE>.json")
-  project     = "<YOUR-PROJECT-ID>"
-  region      = "us-central1"
-}
+🛠 Step 2: Google Cloud SDK and Credentials Setup
 
-resource "google_storage_bucket" "data_lake" {
-  name     = "santander-bike-rentals-data-lake"
-  location = "US"
-}
++ Set up the Google Cloud SDK on your system and authenticate with your Google Cloud project.
 
-resource "google_bigquery_dataset" "dataset" {
-  dataset_id = "bike_rentals"
-  project    = "<YOUR-PROJECT-ID>"
-  location   = "US"
-}
-```
-🛠 Step 3: Deploy Terraform
++ Follow the setup instructions here:
+[Google Cloud SDK Setup Guide](https://github.com/DataTalksClub/data-engineering-zoomcamp/blob/main/01-docker-terraform/1_terraform_gcp/2_gcp_overview.md#initial-setup)
 
-Run the following commands:
+
+🛠 Step 3: Create a Terraform Script 
+
++ Create a file called main.tf in a designated folder for your Terraform projects. For example, create a folder like C:\Users\user\terraform-projects.
+
++ You can refer to your main.tf file [here](https://github.com/chenjing2025/de-zcamp/blob/main/terraform_basic/main.tf).
+
+
+🛠 Step 4: Deploy Terraform 
+
++ Open your terminal or command prompt and run the following commands:
 
 ```
-terraform init
-terraform apply
+C:\Users\user>cd C:\Users\user\terraform-projects
+C:\Users\user\terraform-projects>terraform init
+C:\Users\user\terraform-projects>terraform plan
+C:\Users\user\terraform-projects>terraform apply
 ```
+
++ These [commands](https://github.com/DataTalksClub/data-engineering-zoomcamp/blob/main/01-docker-terraform/1_terraform_gcp/1_terraform_overview.md#execution-steps)
+will:
+
+1. Initialize Terraform (terraform init).
+
+2. Preview the changes Terraform will make (terraform plan).
+
+3. Apply the changes to your Google Cloud project (terraform apply).
+
 
 ### Set Up Airflow with Docker
 🛠 Step 1: Install Docker and Docker Compose
