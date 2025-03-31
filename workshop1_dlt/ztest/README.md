@@ -1,8 +1,6 @@
 # 🚴‍♂️ End-to-End Data Pipeline for Santander Bike Rentals
 
-## 📑 Table of Contents
-
-# Table of Contents
+## 📑Table of Contents
 * [Overview](#overview)
 * [Objectives](#objectives)
 * [Dataset](#dataset)
