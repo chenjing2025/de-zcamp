@@ -12,7 +12,7 @@
 * [Future Enhancements](#future-enhancements)
 * [Contributors](#contributors)
 
-## 📌 Overview
+## Overview 📌 
 This project builds an end-to-end data pipeline to process and visualize Santander bicycle rental data in London. It integrates cloud-based storage, data transformation, and dashboard visualization.
 
 ## 🎯 Objectives
