@@ -31,11 +31,13 @@ The goal of this project is to:
 First, we need to create a Google Cloud Storage bucket and a BigQuery dataset.
 
 🛠 Step 1: Install Terraform
+
 Make sure Terraform is installed on your system:
 ```
 terraform -v  # Check Terraform version
 ```
 🛠 Step 2: Create a Terraform Script
+
 Create a file main.tf:
 ```
 provider "google" {
@@ -56,6 +58,7 @@ resource "google_bigquery_dataset" "dataset" {
 }
 ```
 🛠 Step 3: Deploy Terraform
+
 Run the following commands:
 
 ```
@@ -65,6 +68,7 @@ terraform apply
 
 ### Set Up Airflow with Docker
 🛠 Step 1: Install Docker and Docker Compose
+
 Ensure Docker is installed:
 ```
 docker -v  # Check Docker version
@@ -72,6 +76,7 @@ docker-compose -v  # Check Docker Compose version
 ```
 
 🛠 Step 2: Create docker-compose.yml
+
 This will set up Apache Airflow with a Postgres backend.
 
 ```
@@ -95,6 +100,7 @@ services:
       - ./dags:/opt/airflow/dags
 ```
 🛠 Step 3: Start Airflow
+
 Run the following command to start Airflow:
 
 ```
@@ -103,7 +109,9 @@ docker-compose up -d
 
 ## Data Pipeline Setup
 ### Data Ingestion (Airflow DAG)
+
 🛠 Step 1: Create an Airflow DAG
+
 Create a Python file dags/bike_rentals_dag.py:
 
 ```
@@ -138,6 +146,7 @@ with DAG('santander_bike_rentals_dag', default_args=default_args, schedule_inter
 ```
 
 🛠 Step 2: Deploy the DAG to Airflow
+
 Move the DAG file into the dags/ folder in your Airflow container:
 
 ```
@@ -150,6 +159,7 @@ docker-compose restart
 ```
 ### Data Transformation (BigQuery SQL)
 🛠 Step 1: Create a SQL Query for Data Cleaning
+
 Create a SQL file sql/transform_bike_rentals.sql:
 
 ```sql
@@ -160,6 +170,7 @@ FROM `bike_rentals.dataset.raw_table`
 WHERE rental_count > 0;
 ```
 🛠 Step 2: Run SQL in BigQuery
+
 Run the query in BigQuery Console or use:
 
 ```
