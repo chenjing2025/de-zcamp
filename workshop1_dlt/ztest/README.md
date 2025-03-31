@@ -2,6 +2,7 @@
 
 ## 📑 Table of Contents
 
+* [Overview](#overview)
 * [Objectives](#objectives)
 * [Dataset](#dataset)
 * [Tech Stack](#tech-stack)
