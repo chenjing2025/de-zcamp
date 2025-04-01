@@ -193,12 +193,8 @@ Inside the test_hello_dag.py file, define a simple DAG using the PythonOperator.
 
 3. Verify the DAG
    
-Once you've created the test_hello_dag.py file, Airflow should automatically detect the new DAG. You can verify that it appears in the Airflow Web UI:
-
-Go to http://localhost:8080.
-
+Once you've created the test_hello_dag.py file, Airflow should automatically detect the new DAG. You can verify that it appears in the Airflow Web UI. Go to http://localhost:8080.
 You should see test_hello_dag listed in the DAGs tab.
-
 
 🛠 Step 3: Start Airflow with Docker Compose
 
@@ -224,13 +220,14 @@ docker ps
 ```
 
 5. Access Airflow Web UI
-6. 
+
 Once the containers are running, you can access the Airflow Web UI at http://localhost:8080:
 
 Username: airflow
 Password: airflow
 
 6. Edit DAGs or SQL Files
+
 To edit DAGs or SQL scripts, open the Airflow directory in VS Code:
 ```
 code .
