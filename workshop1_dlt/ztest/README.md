@@ -266,17 +266,22 @@ Run the query in BigQuery Console or use:
 bq query --use_legacy_sql=false < sql/transform_bike_rentals.sql
 ```
 ## Dashboard Setup
-1️⃣ Open Looker Studio → Click Create Report
 
-2️⃣ Select BigQuery as your data source
+1. Open Looker Studio → Click Create Report
 
-3️⃣ Choose the bike_rentals.dataset.cleaned_table
+2. Select BigQuery as your data source
 
-4️⃣ Create visualizations:
+3. Choose the bike_rentals.dataset.cleaned_table
 
-Bar Chart → Categorical data distribution
+* Notes:
+  * Each chart or table in your report can be linked to a different data source. 
+  * You can manually add additional datasets
 
-Line Chart → Bike rentals over time
+5. Create visualizations:
+
+- Build at least two visualizations:
+    - Bar Chart → Categorical data distribution
+    - Line Chart → Bike rentals over time
 
 ## Running the Pipeline
 To run the entire pipeline:
