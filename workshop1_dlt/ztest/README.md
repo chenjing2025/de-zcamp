@@ -89,7 +89,7 @@ docker run hello-world
 
 1. Create an Airflow project directory
 
-```sh
+```
 mkdir ~/airflow && cd ~/airflow
 ```
 2. Download the official docker-compose.yaml file
