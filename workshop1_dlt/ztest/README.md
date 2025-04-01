@@ -139,55 +139,96 @@ You can start creating DAGs inside ~/airflow/dags/
 
 
 ## Data Pipeline Setup
-### Data Ingestion (Airflow DAG)
 
-🛠 Step 1: Create an Airflow DAG
+🛠 Step 1: Configure Airflow
 
-Create a Python file dags/bike_rentals_dag.py:
+Before you can run Airflow, ensure that the environment is properly configured.
 
+1. Access the Airflow Webserver Container
+
+To configure Airflow inside the container, first execute the following command to get inside the Airflow webserver container:
 ```
-from airflow import DAG
-from airflow.providers.google.cloud.operators.storage import GCSCreateObjectOperator
-from airflow.providers.google.cloud.transfers.gcs_to_bigquery import GCSToBigQueryOperator
-from datetime import datetime
+docker exec -it airflow-airflow-webserver-1 bash
+```
+2. Switch to the Airflow User
+   
+Airflow should be run by the airflow user for proper permissions. Switch to the airflow user inside the container:
+```
+su - airflow
+```
+3. Install Python Dependencies
 
-default_args = {
-    'owner': 'airflow',
-    'start_date': datetime(2023, 1, 1),
-}
-
-with DAG('santander_bike_rentals_dag', default_args=default_args, schedule_interval='@daily') as dag:
-    
-    upload_to_gcs = GCSCreateObjectOperator(
-        task_id='upload_data_to_gcs',
-        bucket_name='santander-bike-rentals-data-lake',
-        object_name='bike_rentals.csv',
-        source_objects=['/path/to/local/file/bike_rentals.csv']
-    )
-
-    load_to_bigquery = GCSToBigQueryOperator(
-        task_id='load_data_to_bigquery',
-        bucket_name='santander-bike-rentals-data-lake',
-        source_objects=['bike_rentals.csv'],
-        destination_project_dataset_table='bike_rentals.dataset.table',
-        write_disposition='WRITE_APPEND'
-    )
-
-    upload_to_gcs >> load_to_bigquery
+Some additional Python packages are required, like apache-airflow-providers-google for GCP integration.
+```
+pip install apache-airflow-providers-google
 ```
 
-🛠 Step 2: Deploy the DAG to Airflow
+4. Set Up Google Cloud Credentials
+```
+nano ~/.bashrc
+export GOOGLE_APPLICATION_CREDENTIALS="/mnt/d/GCP_Credentials/dtc-de-course-447820-299db174bd40.json"
+source ~/.bashrc
+```
 
-Move the DAG file into the dags/ folder in your Airflow container:
+5. Verify the Environment Variable
+```
+echo $GOOGLE_APPLICATION_CREDENTIALS
+```
+   
+🛠 Step 2: Create Your First DAG
+
+Now that your environment is configured, it's time to create your first DAG.
+
+1. Create a DAG File
+
+Inside the ~/airflow/dags/ directory, create a Python file for your first DAG:
 
 ```
-mv bike_rentals_dag.py dags/
+nano ~/airflow/dags/test_hello_dag.py
 ```
-Restart Airflow:
 
+2. Define the DAG
+
+Inside the test_hello_dag.py file, define a simple DAG using the PythonOperator. This DAG will run a Python function that prints a message to the console when triggered.
+
+3. Verify the DAG
+   
+Once you've created the test_hello_dag.py file, Airflow should automatically detect the new DAG. You can verify that it appears in the Airflow Web UI:
+
+Go to http://localhost:8080.
+
+You should see test_hello_dag listed in the DAGs tab.
+
+4. Restart Airflow Services
+
+To make sure your DAG is picked up by Airflow, restart the necessary services:
 ```
-docker-compose restart
+docker-compose restart airflow-webserver
+docker-compose restart airflow-scheduler
 ```
+This will reload the Airflow environment and allow the new DAG to be recognized.
+
+5. Trigger the DAG
+   
+Once your Airflow Web UI is up and running, you can trigger the test_hello_dag manually:
+
+Navigate to the DAGs tab in the Airflow Web UI.
+
+Find the test_hello_dag DAG and click on the play button to trigger it.
+
+When the DAG runs, you should see the "Hello from Airflow!" message printed in the logs.
+
+6. Monitor the DAG Execution
+   
+After triggering the DAG, you can monitor the task execution:
+
+Go to the Tree View or Graph View in the Airflow Web UI.
+
+You should see the task hello_task as completed after it runs.
+
+🛠 Step 3: Create Your First DAG
+
+
 ### Data Transformation (BigQuery SQL)
 🛠 Step 1: Create a SQL Query for Data Cleaning
 
