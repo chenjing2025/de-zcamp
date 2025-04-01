@@ -199,35 +199,55 @@ Go to http://localhost:8080.
 
 You should see test_hello_dag listed in the DAGs tab.
 
-4. Restart Airflow Services
 
-To make sure your DAG is picked up by Airflow, restart the necessary services:
+🛠 Step 3: Start Airflow with Docker Compose
+
+1. Navigate to the Airflow directory
+```
+cd ~/airflow
+```
+2. Check for docker-compose.yml
+```
+ls
+```
+You should see the docker-compose.yml file listed in the directory.
+
+3. Start Airflow containers
+```
+docker-compose up -d
+```
+4. Check container status
+
+You can verify that all containers are running:
+```
+docker ps
+```
+
+5. Access Airflow Web UI
+6. 
+Once the containers are running, you can access the Airflow Web UI at http://localhost:8080:
+
+Username: airflow
+Password: airflow
+
+6. Edit DAGs or SQL Files
+To edit DAGs or SQL scripts, open the Airflow directory in VS Code:
+```
+code .
+```
+This will open the Airflow project in VS Code, where you can make changes to the DAGs or any SQL files required for the pipeline.
+
+7. Restart Airflow Services
+
+If you make any changes to the DAGs or configurations, you might need to restart the Airflow webserver or scheduler for the changes to take effect.
 ```
 docker-compose restart airflow-webserver
 docker-compose restart airflow-scheduler
 ```
-This will reload the Airflow environment and allow the new DAG to be recognized.
 
-5. Trigger the DAG
-   
-Once your Airflow Web UI is up and running, you can trigger the test_hello_dag manually:
+8. Verify Pipeline in Web UI
 
-Navigate to the DAGs tab in the Airflow Web UI.
-
-Find the test_hello_dag DAG and click on the play button to trigger it.
-
-When the DAG runs, you should see the "Hello from Airflow!" message printed in the logs.
-
-6. Monitor the DAG Execution
-   
-After triggering the DAG, you can monitor the task execution:
-
-Go to the Tree View or Graph View in the Airflow Web UI.
-
-You should see the task hello_task as completed after it runs.
-
-🛠 Step 3: Create Your First DAG
-
+After restarting, navigate back to the Airflow Web UI at http://localhost:8080 to monitor and manage the DAGs.
 
 ### Data Transformation (BigQuery SQL)
 🛠 Step 1: Create a SQL Query for Data Cleaning
