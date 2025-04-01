@@ -117,11 +117,11 @@ docker ps
 
 Open a browser and go to: http://localhost:8080
 
-Default credentials:
++ **Default credentials**:
 
-Username: airflow
-
-Password: airflow
+  + Username: airflow
+ 
+  + Password: airflow
 
 🛠 Step 3: Open Airflow Project in VS Code (WSL)
 
