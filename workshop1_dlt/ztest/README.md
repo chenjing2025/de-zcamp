@@ -85,37 +85,58 @@ docker -v  # Check Docker version
 docker-compose -v  # Check Docker Compose version
 ```
 
-🛠 Step 2: Create docker-compose.yml
+🛠 Step 2: Install Apache Airflow using Docker
 
-This will set up Apache Airflow with a Postgres backend.
-
-```
-version: '3'
-services:
-  postgres:
-    image: postgres:13
-    environment:
-      POSTGRES_USER: airflow
-      POSTGRES_PASSWORD: airflow
-    ports:
-      - "5432:5432"
-
-  webserver:
-    image: apache/airflow:2.3.0
-    environment:
-      - AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:airflow@postgres/airflow
-    ports:
-      - "8080:8080"
-    volumes:
-      - ./dags:/opt/airflow/dags
-```
-🛠 Step 3: Start Airflow
-
-Run the following command to start Airflow:
+1. Create an Airflow project directory
 
 ```
-docker-compose up -d
+mkdir ~/airflow && cd ~/airflow
 ```
+2. Download the official docker-compose.yaml file
+
+```
+curl -LfO 'https://airflow.apache.org/docs/apache-airflow/2.8.2/docker-compose.yaml'
+```
+3. Set environment variables
+```
+echo -e "AIRFLOW_UID=$(id -u)" > .env
+```
+4. Initialize Airflow
+```
+docker compose up airflow-init
+```
+5. Start Airflow in detached mode
+```
+docker compose up -d
+```
+6. Check running containers
+```
+docker ps
+```
+7. Access Airflow Web UI
+
+Open a browser and go to: http://localhost:8080
+
+Default credentials:
+
+Username: airflow
+
+Password: airflow
+
+🛠 Step 3: Open Airflow Project in VS Code (WSL)
+
+1. Open WSL and navigate to the Airflow directory
+```
+cd ~/airflow
+```
+2. Launch VS Code in the Airflow directory
+```
+code .
+```
+This will open the project in VS Code Remote - WSL.
+
+You can start creating DAGs inside ~/airflow/dags/
+
 
 ## Data Pipeline Setup
 ### Data Ingestion (Airflow DAG)
