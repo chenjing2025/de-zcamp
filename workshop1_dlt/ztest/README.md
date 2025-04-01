@@ -77,12 +77,12 @@ will:
 
 
 ### Set Up Airflow with Docker
-🛠 Step 1: Install Docker and Docker Compose
+🛠 Step 1: Install Docker in WSL (Ubuntu)
 
-Ensure Docker is installed:
+Ensure Docker is installed and running inside WSL. You could verify installation:
 ```
-docker -v  # Check Docker version
-docker-compose -v  # Check Docker Compose version
+docker --version
+docker run hello-world
 ```
 
 🛠 Step 2: Install Apache Airflow using Docker
